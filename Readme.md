@@ -1,2 +1,2 @@
 # Qianzi Project
-# yes
+# of course
