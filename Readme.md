@@ -1,5 +1,6 @@
 # Qianzi Project
 <<<<<<< HEAD
+<<<<<<< HEAD
 # of course
 =======
 <<<<<<< HEAD
@@ -12,3 +13,7 @@
 Team leader: Patrick Li
 Team leader: Patrick Li
 >>>>>>> 6866ea033f233db87013f18807e4cdb6099dfba1
+=======
+# Hello World
+# New update this just in!
+>>>>>>> 4cc204a563d699b7fbebaa24b05c6b0c97b900d5
