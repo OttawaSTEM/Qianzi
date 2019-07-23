@@ -13,12 +13,26 @@
     <body>
         <h1>Audio Test</h1> 
         <div id="playlist">
-            <!-- <audio src="Library/A/A4.mp3" type="audio/mpeg"></audio> -->
         </div>
 
+        <div id="answer">
+
+        </div>
+        <select>
+            <option value="10000">10 Seconds</option>
+            <option value="20000">20 Seconds</option>
+            <option value="30000">30 Seconds</option>
+            <option value="45000">45 Seconds</option>
+        </select>
+        
+        <br>
+        
         <button id="generate_list">
             Genterate List
         </button>
+
+        <br>
+
         <button id="play">
             Play
         </button>
@@ -29,55 +43,54 @@
                 var max_int = 300;
                 var playlist = new Array();
                 var num_words = 3;
+                var start_interval = 1000;
+                var interval = 10000;
+
+                $('select').on('change', function() {
+                    // console.log(this.value);
+                    interval = this.value;
+                });
 
                 // The function returns the random int from range
                 function RandomInt(min_int, max_int) {
                     return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
                 }
 
+                // Click "Generate" to  generate playlist
+                $('#generate_list').on('click', function () {
+                    $("#playlist").empty();
+                    for (i = 1; i <= num_words; i++) {
+                        $("#playlist").append("<audio src=\"Library/A/A" + RandomInt(min_int, max_int) + ".mp3\" type=\"audio/mpeg\"></audio>");
+                    }
 
-                // $('#generate_list').on('click', function () {
-                //     $("#playlist").empty();
-                // });
+                });
                 
-                for (i = 1; i <= max_int; i++) {
-                    // playlist[i] = RandomInt(min_int, max_int);
-                    // console.log(playlist[i]);
-
-                    // Option 1
-                    // random_int = RandomInt(min_int, max_int)
-                    // $("#playlist").append("<audio src=\"Library/A/A" + random_int + ".mp3\" type=\"audio/mpeg\"></audio>");
-
-                    // Option 2
-                    // $("#playlist").append("<audio src=\"Library/A/A" + RandomInt(min_int, max_int) + ".mp3\" type=\"audio/mpeg\"></audio>");
-
-                    // Option 2
-                    $("#playlist").append("<audio src=\"Library/A/A" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
-                }
-
-
-
-                // Play audio files
-                // $("audio").on("ended", function(){
-                //     var audio = $(this).next("audio");
-                //     if (audio.length) {
-                //         setTimeout(function() {
-                //             audio.get(0).play();
-                //         }, 2000);
-                //     } 
-                // });
-                
+                // Click the "Play" button start to play
                 $('#play').on('click', function () { 
-                    for (i = 0; i < num_words; i++) {
-                        playlist[i] = RandomInt(min_int, max_int);
-                    }
-                    for (i = 0; i < playlist.length; i++) {
-                        console.log(playlist[i]);
-                        setTimeout(function() {
-                            $("audio")[i].play();
-                        }, 2000);
-                    }
-                    // $("audio")[299].play();
+                    var i = 0;
+                    setTimeout(function() {
+                        $("audio")[0].play();
+                    }, start_interval);
+
+                    // Play audio files
+                    $("audio").on("ended", function(){
+                        var audio = $(this).next("audio");
+                        if (audio.length) {
+                            setTimeout(function() {
+                                $("#answer").empty();
+                                $("#answer").append("<p>answer " + i +"</p>");
+                                audio.get(0).play();
+                            }, interval);
+                            i = i + 1;
+                        } else {
+                            i = i + 1;
+                            setTimeout(function() {
+                                $("#answer").empty();
+                                $("#answer").append("<p>answer " + i +"</p>");
+                            }, interval);
+                        }
+                    });
+
                 });
             });
         </script>
@@ -85,4 +98,3 @@
     </body>
 </html>
 
-<!-- https://github.com/mrf345/audio_sequence -->
