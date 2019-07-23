@@ -16,6 +16,9 @@
             <!-- <audio src="Library/A/A4.mp3" type="audio/mpeg"></audio> -->
         </div>
 
+        <button id="generate_list">
+            Genterate List
+        </button>
         <button id="play">
             Play
         </button>
@@ -33,44 +36,53 @@
                 }
 
 
-                for (i = 1; i <= num_words; i++) {
+                // $('#generate_list').on('click', function () {
+                //     $("#playlist").empty();
+                // });
+                
+                for (i = 1; i <= max_int; i++) {
                     // playlist[i] = RandomInt(min_int, max_int);
                     // console.log(playlist[i]);
 
                     // Option 1
-                    random_int = RandomInt(min_int, max_int)
-                    $("#playlist").append("<audio src=\"Library/A/A" + random_int + ".mp3\" type=\"audio/mpeg\"></audio>");
+                    // random_int = RandomInt(min_int, max_int)
+                    // $("#playlist").append("<audio src=\"Library/A/A" + random_int + ".mp3\" type=\"audio/mpeg\"></audio>");
 
                     // Option 2
                     // $("#playlist").append("<audio src=\"Library/A/A" + RandomInt(min_int, max_int) + ".mp3\" type=\"audio/mpeg\"></audio>");
+
+                    // Option 2
+                    $("#playlist").append("<audio src=\"Library/A/A" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                 }
 
 
+
                 // Play audio files
-                // var active = false;
-
-                $("audio").on("ended", function(){ 
-                    var audio = $(this).next("audio");
-                    if (audio.length) {
-                        setTimeout(function() {
-                            audio.get(0).play();
-                        }, 2000);
-                    } 
-                    // else {
-                    //     active = false;   
-                    // }
-                });
-
+                // $("audio").on("ended", function(){
+                //     var audio = $(this).next("audio");
+                //     if (audio.length) {
+                //         setTimeout(function() {
+                //             audio.get(0).play();
+                //         }, 2000);
+                //     } 
+                // });
+                
                 $('#play').on('click', function () { 
-                    $("audio")[0].play();
-                    // if (!active) {
-                    //     $("audio")[0].play();
-                    //     active = true;
-                    // }
+                    for (i = 0; i < num_words; i++) {
+                        playlist[i] = RandomInt(min_int, max_int);
+                    }
+                    for (i = 0; i < playlist.length; i++) {
+                        console.log(playlist[i]);
+                        setTimeout(function() {
+                            $("audio")[i].play();
+                        }, 2000);
+                    }
+                    // $("audio")[299].play();
                 });
-
             });
         </script>
 
     </body>
 </html>
+
+<!-- https://github.com/mrf345/audio_sequence -->
