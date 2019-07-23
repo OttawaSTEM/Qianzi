@@ -1,19 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+        <script type="text/javascript" src="http://qianzi.ca/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
 
-<body>
-    <h1>Audio Test</h1>
-    <audio controls>
-        <source src="Library/A/A1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-</body>
+    <body>
+        <h1>Audio Test</h1> 
+        <div id="playlist">
+            <!-- <audio src="Library/A/A4.mp3" type="audio/mpeg"></audio> -->
+        </div>
 
+        <button id="play">
+            Play
+        </button>
+
+        <script>
+            $(document).ready(function () {
+                var min_int = 1;
+                var max_int = 300;
+                var playlist = new Array();
+                var num_words = 3;
+
+                // The function returns the random int from range
+                function RandomInt(min_int, max_int) {
+                    return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
+                }
+
+
+                for (i = 1; i <= num_words; i++) {
+                    // playlist[i] = RandomInt(min_int, max_int);
+                    // console.log(playlist[i]);
+
+                    // Option 1
+                    random_int = RandomInt(min_int, max_int)
+                    $("#playlist").append("<audio src=\"Library/A/A" + random_int + ".mp3\" type=\"audio/mpeg\"></audio>");
+
+                    // Option 2
+                    // $("#playlist").append("<audio src=\"Library/A/A" + RandomInt(min_int, max_int) + ".mp3\" type=\"audio/mpeg\"></audio>");
+                }
+
+
+                // Play audio files
+                // var active = false;
+
+                $("audio").on("ended", function(){ 
+                    var audio = $(this).next("audio");
+                    if (audio.length) {
+                        setTimeout(function() {
+                            audio.get(0).play();
+                        }, 2000);
+                    } 
+                    // else {
+                    //     active = false;   
+                    // }
+                });
+
+                $('#play').on('click', function () { 
+                    $("audio")[0].play();
+                    // if (!active) {
+                    //     $("audio")[0].play();
+                    //     active = true;
+                    // }
+                });
+
+            });
+        </script>
+
+    </body>
 </html>
