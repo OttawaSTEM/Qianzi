@@ -605,6 +605,7 @@
                 var library_a_words = 10;
                 var library_a_interval = 10000;
                 var library_a_repeat = 1;
+                var library_a_allwords = "";
                 
                 // The function returns the random int from range
                 function RandomInt(min_int, max_int) {
@@ -642,6 +643,11 @@
                             $("#library_a_playlist").append("<audio src=\"Library/A/A" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
                         }
                     }
+
+                    $.get("Words/library_a.json", function(response) {
+                        var library_a_allwords = response;
+                    });
+                    console.log(library_a_allwords);
     
                     var i = 0;
                     setTimeout(function() {
