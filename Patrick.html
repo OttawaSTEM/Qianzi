@@ -397,29 +397,37 @@
                                         <td>重复次数</td>
                                     </tr>
                                     <tr>
-                                        <td><select>
+                                        <td>
+                                            <select id="library_a_words">
                                                 <option value="10">10 个词</option>
                                                 <option value="20">20 个词</option>
-                                                <option value="30">30 个词</option>
-                                            </select></td>
-                                        <td><select>
+                                                <option value="50">50 个词</option>
+                                                <option value="80">80 个词</option>
+                                                <option value="100">100 个词</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select id="library_a_interval">
                                                 <option value="10000">10 秒</option>
                                                 <option value="20000">20 秒</option>
                                                 <option value="30000">30 秒</option>
-                                            </select></td>
-                                        <td><select>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select id="library_a_repeat">
                                                 <option value="1">1 次</option>
                                                 <option value="2">2 次</option>
                                                 <option value="3">3 次</option>
-                                            </select></td>
+                                            </select>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div><button id="btn_library_a" class="button small color">开始听写</button></div>
-                        <div id="playlist_library_a"></div>
+                        <div><button id="library_a_btn" class="button small color">开始听写</button></div>
+                        <div id="library_a_playlist"></div>
                         <br>
-                        <div id="answer_library_a" style="font-size: 2em; line-height: 1.6;"></div>
+                        <div id="library_a_answers" style="font-size: 2em; line-height: 1.6;"></div>
                         <hr class="wp-block-separator">
 
                         <h3>B词库 – 听写测试</h3>
@@ -592,48 +600,72 @@
             $(document).ready(function() {
                 var min_int = 1;
                 var max_int = 300;
-                var playlist = new Array();
-                var start_interval = 3000;
-                var num_words = 3;
-                var interval = 1000;
-                var repeat = 3;
+                var base_interval = 3000;
+
+                var library_a_words = 10;
+                var library_a_interval = 10000;
+                var library_a_repeat = 1;
                 
-                $("select").on("change", function() {
-                    // console.log(this.value);
-                    interval = this.value;
-                });
-    
                 // The function returns the random int from range
                 function RandomInt(min_int, max_int) {
                     return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
                 }
-    
 
-    
+                // Library A options
+                // Plain JavaScript:
+                // document.getElementById('library_a_words').addEventListener('change', function(){
+                //     library_a_words = this.value;
+                //     console.log(library_a_words);
+                // });
+                $("#library_a_words").on("change", function() {
+                    library_a_words = parseInt(this.value);
+                    // console.log(library_a_words);
+                });
+                $("#library_a_interval").on("change", function() {
+                    library_a_interval = parseInt(this.value);
+                    // console.log(library_a_interval);
+                });
+                $("#library_a_repeat").on("change", function() {
+                    library_a_repeat = parseInt(this.value);
+                    // console.log(library_a_repeat);
+                });
+
+
                 // Click the "Play" button start to play
-                $("#btn_library_a").on("click", function() {
-                    $("#answer_library_a").empty();
-                    $("#playlist_library_a").empty();
-                    for (i = 1; i <= num_words; i++) {
-                        $("#playlist_library_a").append("<audio src=\"Library/A/A" + RandomInt(min_int, max_int) + ".mp3\" type=\"audio/mpeg\"></audio>");
+                $("#library_a_btn").on("click", function() {
+                    $("#library_a_answers").empty();
+                    $("#library_a_playlist").empty();
+                    for (i = 1; i <= library_a_words; i++) {
+                        $("#library_a_playlist").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
+                        word_num = RandomInt(min_int, max_int)
+                        for (j = 1; j <= library_a_repeat; j++) {
+                            $("#library_a_playlist").append("<audio src=\"Library/A/A" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
+                        }
                     }
     
                     var i = 0;
                     setTimeout(function() {
                         $("audio")[0].play();
-                    }, start_interval);
-    
+                    }, base_interval);
+                    i = i + 1;
+                    
                     // Play audio files
                     $("audio").on("ended", function() {
                         var audio = $(this).next("audio");
                         if (audio.length) {
-                            setTimeout(function() {
-                                audio.get(0).play();
-                            }, interval);
+                            if ((i % (library_a_repeat + 1)) == 1) {
+                                setTimeout(function() {
+                                    audio.get(0).play();
+                                }, base_interval);
+                            } else {
+                                setTimeout(function() {
+                                    audio.get(0).play();
+                                }, library_a_interval);
+                            }
                             i = i + 1;
                         } else {
-                            $("#answer_library_a").empty();
-                            $("#answer_library_a").append("听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案");
+                            $("#library_a_answers").empty();
+                            $("#library_a_answers").append("听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案 听写测试答案");
                         }
                     });
     
