@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+</head>
+
+<body>
+
+
+    <button id="clickMe">Click Me!</button>
+
+    You've clicked the button <span id="numClicks">0 times</span>.
+    <script>
+        $(document).ready(function () {
+                    var clicks = 0;
+
+                    function clickHandler() {
+                        clicks++;
+                        var numClicksSpan = document.getElementById('numClicks');
+                        if (clicks == 1) {
+
+                            numClicksSpan.innerHTML = 'once';
+                        } else {
+
+                            numClicksSpan.innerHTML = clicks + ' times';
+                        }
+
+                    }
+
+                    var button = document.getElementById('clickMe');
+                    button.addEventListener('click', clickHandler);
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
