@@ -516,7 +516,7 @@
                 console.log(library_a_words);
             });
 
-            var library_a_interval = 10;
+            var library_a_interval = 10000;
             $("#library_a_interval").on("change", function () {
                 library_a_interval = parseInt(this.value);
                 console.log(library_a_interval);
@@ -538,39 +538,50 @@
             }
 
             $('#btn_library_a').on('click', function () {
+                console.log(library_a_interval);
+                $("#library_a_answers").empty();
+                $("#library_a_answers").hide();
+                $("#library_a").empty();
                 // console.log(random);
-                //for (i = 1; i <= library_a_words; i++) {
-                for (i = 1; i <= 3; i++) {
+                for (i = 1; i <= library_a_words; i++) {
+                // for (i = 1; i <= 3; i++) {
                     // $("#library_a").append("<audio>Started</audio>");
-                    $("#library_a").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
+                    $("#library_a").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
+                    // $("#library_a").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                     var random = RandomInt(1, 300);
                     for (j = 1; j <= library_a_repeat; j++) {
-                        $("#library_a").append("<audio src=\"Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
+                        $("#library_a").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
+                        // $("#library_a").append("<audio src=\"Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
 						$("#library_a_answers").append("<h3>" + i + ". " + library_a_allwords[random - 1] + "</h3>");
                     }   
                 }
 
-                $("audio")[0].play();
+                //Number audio delay
+                var i = 0;
+                setTimeout(function() {
+                    $("audio")[0].play();
+                }, base_interval);
+                i = i + 1;
+                
+                // 
                 $("audio").on("ended", function() {
                     var audio = $(this).next("audio");
                     if (audio.length) {
-						setTimeout(function() {
-                            audio.get(0).play();
-                        }, library_a_interval);
-
-
+                        if ((i % (library_a_repeat + 1)) == 1) {
+                            setTimeout(function() {
+                                audio.get(0).play();
+                            }, base_interval);
+                        } else {
+                            setTimeout(function() {
+                                audio.get(0).play();
+                            }, library_a_interval);
+                        }
+                        i = i + 1;
                     } else {
-                        //$("#library_a_answers").empty();
-						// $("#library_a_answers").html(library_a_allwords[299]);
                         $("#library_a_answers").show();
                     }
-
                 });
-
-
             });
-
-
         });
     </script>
 
