@@ -8,7 +8,8 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch index.html",
-            "file": "${file}"
+            "file": "${file}",
+            "runtimeArgs": ["--disable-web-security"]
         }
     ]
 }
