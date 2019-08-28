@@ -7,7 +7,7 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch index.html",
+            "name": "Launch local html file",
             "file": "${file}",
             "runtimeArgs": ["--disable-web-security"]
         }
