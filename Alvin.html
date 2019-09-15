@@ -273,10 +273,24 @@
             margin: 0 !important;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <style  type="text/css">
+        select.maincolor {
+            font-size: 120%;
+            color: white; 
+            background-color: #81d742;
+            margin-right: 15px;
+        }
+        #slider-range .ui-slider-range { background: #8ae234; }
+        #slider-range .ui-slider-handle { border-color: #8ae234; }
+
+    </style>
     <script async="" src="https://negbar.ad-blocker.org/chrome/adblocker-chromeglobalinjectjs.js"></script>
     <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/37/10a/common.js"></script>
     <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/37/10a/util.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body class="page-template-default page page-id-1821 group-blog" data-gr-c-s-loaded="true">
@@ -311,6 +325,7 @@
                     <div class="contact-details"> 千字冲关组委会</div>
 
                     <div class="clearfix"></div>
+                    
                     <!-- Search -->
                     <nav class="top-search">
                         <form action=" http://qianzi.ca " id="searchform" method="get">
@@ -368,11 +383,11 @@
         <div id="content">
             <!-- 960 Container -->
             <div class="container floated">
-
+                
                 <div class="sixteen floated page-title">
-
+                    
                     <h1>听写测试 </h1>
-
+                    
                     <nav id="breadcrumbs">
                         <ul>
                             <li>You are here:</li>
@@ -384,7 +399,7 @@
 
             </div>
             <!-- 960 Container / End -->
-
+            
             <!-- Page Content -->
             <div id="post-1821" class="page-content post-1821 page type-page status-publish hentry">
                 <!-- 960 Container -->
@@ -394,32 +409,45 @@
                     <h3>A词库 – 听写测试</h3>
                     <div id="test_library_a">
                         <table style="width: 30%;">
-                            <tbody>
+                                <p>
+                                    <label id="wordrange" for="amount">听写范围:</label>
+                                    <h1><input type="text" id="amount" readonly style="border:0; color:#81d742; font-weight:bold;"></h1>
+                                  </p>
+                                   
+                                  <div id="slider-range" style="width: 50%; color:#81d742;">abc</div>   
+                                <tbody>
                                 <tr style="height: 30px;" >
                                     <td style="font-size: 110%;">听写词数   </td>
                                     <td style="font-size: 110%;">听写间隔   </td>
                                     <td style="font-size: 110%;">重复次数   </td>
                                 </tr>
+                                
                                 <tr>
-                                    <td><select id="library_a_words" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;">
+                                    <!-- <td><select id="library_a_words" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;"> -->
+                                    <td><select id="library_a_words" class="maincolor" >
                                             <option value="10">10 个词</option>
                                             <option value="20">20 个词</option>
                                             <option value="30">30 个词</option>
                                             <option value="40">40 个词</option>
                                         </select></td>
-                                    <td><select id="library_a_interval" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;">
+                                    <td><select id="library_a_interval" class="maincolor">
                                             <option value="10000">10 秒</option>
                                             <option value="20000">20 秒</option>
                                             <option value="30000">30 秒</option>
                                             <option value="40000">40 秒</option>
                                         </select></td>
-                                    <td><select id="library_a_repeat" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;">
+                                    <td><select id="library_a_repeat" class="maincolor">
                                             <option value="1">1 次</option>
                                             <option value="2">2 次</option>
                                             <option value="3">3 次</option>
                                             <option value="4">4 次</option>
                                         </select></td>
-                                </tr>
+                                </tr>    
+                                    <!-- <td><input type="number" name="library_a_first_num" min="1" max="300" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;">
+                                            
+                                    <td><input type="number" name="library_a_last_num" min="1" max="300" style="font-size: 120%; color: white; background-color: #81d742; margin-right: 15px;"> -->
+                                    <!-- <input type="text" id="amount" readonly style="border:0; color:#81d742; font-weight:bold;">
+                                    <div id="slider-range"></div> -->
                             </tbody>
                         </table>
                     </div>
@@ -525,11 +553,26 @@
                 library_a_repeat = parseInt(this.value);
                 // console.log(library_a_repeat);
             });
+            var library_a_first_num
+            var library_a_last_num
 
             $('#library_a').on('click', function () {
                 // console.log("Library AA");
             });
             
+            $("#slider-range").slider({
+                range: true,
+                min: 1,
+                max: 300,
+                values: [ 1, 300 ],
+                slide: function( event, ui ) {
+                $("#amount").val( "  " + ui.values[ 0 ] + "- " + ui.values[ 1 ]);
+                }
+            });
+                //   $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                //     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+                // } );
+
             function RandomInt(min_int, max_int) {
                 return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
             }
@@ -547,6 +590,9 @@
                         $("#library_a").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                         // $("#library_a").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                         var random = RandomInt(1, 300);
+                        
+                        // var random = RandomInt(library_a_first_num, library_a_last_num);
+
                         for (j = 1; j <= library_a_repeat; j++) {
                             $("#library_a").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
                             // $("#library_a").append("<audio src=\"Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
