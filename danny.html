@@ -478,9 +478,8 @@
 
                 <div class="sixteen floated page-title">
 
-                    <h1>听写测试<span class="edit-link"><a class="post-edit-link"
+                    <h1>听写测试 - B<span class="edit-link"><a class="post-edit-link"
                                 href="http://qianzi.ca/wp-admin/post.php?post=1821&amp;action=edit">Edit</a></span></h1>
-                                <audio src="Library/A/A1.mp3" controls></audio>
 
                     <nav id="breadcrumbs">
                         <ul>
@@ -499,6 +498,43 @@
                 <!-- 960 Container -->
                 <!-- Gallery Container -->
                 <div class="container">
+                    <h3>B词库 – 听写测试</h3>
+                    <div id="library_b">
+                        <table style="width: 30%;">
+                            <tbody>
+                                <tr>
+                                    <td>听写词数</td>
+                                    <td>听写间隔</td>
+                                    <td>重复次数</td>
+                                </tr>
+                                <tr>
+                                    <td><select id="library_b_words">
+                                            <option value="10">10 个词</option>
+                                            <option value="20">20 个词</option>
+                                            <option value="50">50 个词</option>
+                                            <option value="80">80 个词</option>
+                                            <option value="100">100 个词</option>
+                                        </select></td>
+                                    <td><select id="library_b_interval">
+                                            <option value="10000">10 秒</option>
+                                            <option value="20000">20 秒</option>
+                                            <option value="30000">30 秒</option>
+                                        </select></td>
+                                    <td><select id="library_b_times">
+                                            <option value="1">1 次</option>
+                                            <option value="2">2 次</option>
+                                            <option value="3">3 次</option>
+                                        </select></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div><button id="library_b_btn" class="button small color">开始听写</button></div>
+                    <hr class="wp-block-separator">
+                    <div id="library_b_playlist"></div>
+                    <br>
+                    <div id="library_b_answers" style="font-size: 2em; line-height: 1.6; display: none;"></div>
+                    <hr class="wp-block-separator">
                 </div>
             </div>
             <!-- Page Content / End -->

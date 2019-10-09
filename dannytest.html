@@ -8,22 +8,37 @@
     <button id="clickMe">Click Me!</button>
     <p>
         You've clicked the button <span id="numClicks">0 times</span>.
-
         <script>
             $(document).ready(function () {
                 var clicks = 0;
 
                 function clickHandler() {
                     clicks++;
-                    var numClicksSpan = document.getElementById('numClicks');
+                    console.log(clicks);
                     if (clicks == 1) {
-                        numClicksSpan.innerHTML = 'once';
+                        $("#numClicks").html('once');
                     } else {
-                        numClicksSpan.innerHTML = clicks + ' times';
+                        $("#numClicks").html(clicks + ' times');
                     }
                 }
-                var button = document.getElementById('clickMe');
-                button.addEventListener('click', clickHandler);
+
+                $("#clickMe").on("click", function () {
+                    console.log("click me");
+                    clickHandler();
+                });
+
+                // var clicks = 0;
+                // function clickHandler() {
+                //     clicks++;
+                //     var numClicksSpan = document.getElementById('numClicks');
+                //     if (clicks == 1) {
+                //         numClicksSpan.innerHTML = 'once';
+                //     } else {
+                //         numClicksSpan.innerHTML = clicks + ' times';
+                //     }
+                // }
+                // var button = document.getElementById('clickMe');
+                // button.addEventListener('click', clickHandler);
             });
         </script>
 </body>
