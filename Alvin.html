@@ -149,7 +149,8 @@
             margin-top: px;
         }
 
-        #tagline {}
+        
+         {}
 
         #content div.product form.cart .variations_button .button,
         .caption-color,
@@ -566,7 +567,7 @@
                 range: true,
                 min: 1,
                 max: 300,
-                values: [ 1, 300 ],
+                values: [ 1, 30 ],
                 slide: function(event, ui) {
                     $("#amount").val( "  " + ui.values[0] + " - " + ui.values[1]);
                     min_range_a = ui.values[0]; 
@@ -577,8 +578,12 @@
                 //     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
                 // } );
 
-            function RandomInt(min_int, max_int) {
-                return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
+            function RandomInt(min_int, max_int, used) {
+                var random = 0;
+                while(!used.includes(random)) {
+                    random = Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
+                }
+                return random;
             }
 
 
@@ -588,6 +593,7 @@
                     $("#library_a_answers").empty();
                     $("#library_a_answers").hide();
                     $("#library_a").empty();
+                    var used = [];
                     // console.log(random);
                     for (i = 1; i <= library_a_words; i++) {
                     // for (i = 1; i <= 3; i++) {
@@ -596,8 +602,9 @@
                         // $("#library_a").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                         // var random = RandomInt(1, 300);
                         
-                        var random = RandomInt(min_range_a, max_range_a);
-
+                        var random = RandomInt(min_range_a, max_range_a, used);
+                        used.push(random);
+                        
                         for (j = 1; j <= library_a_repeat; j++) {
                             $("#library_a").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
                             // $("#library_a").append("<audio src=\"Library/A/A" + random + ".mp3\" type=\"audio/mpeg\"></audio>");
