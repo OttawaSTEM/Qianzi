@@ -149,8 +149,7 @@
             margin-top: px;
         }
 
-        
-         {}
+        #tagline {}
 
         #content div.product form.cart .variations_button .button,
         .caption-color,
@@ -567,7 +566,7 @@
                 range: true,
                 min: 1,
                 max: 300,
-                values: [ 1, 30 ],
+                values: [ 1, 300 ],
                 slide: function(event, ui) {
                     $("#amount").val( "  " + ui.values[0] + " - " + ui.values[1]);
                     min_range_a = ui.values[0]; 
@@ -580,9 +579,9 @@
 
             function RandomInt(min_int, max_int, used) {
                 var random = 0;
-                while(!used.includes(random)) {
+                do {
                     random = Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
-                }
+                } while (used.includes(random));
                 return random;
             }
 
