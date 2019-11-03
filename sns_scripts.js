@@ -205,111 +205,97 @@ $(document).ready(function () {
     
 	// Danny Zhang for Library C
     var min_int_c = 1;
-    var max_int_c = 400;
-    var base_interval = 3000;
-    var used_words = [];
-
-    var library_c_words = 10;
-    var library_c_interval = 10000;
-    var library_c_repeat = 1;
-
-    // The function returns the random int from range
-    function RandomInt(min_int, max_int) {
-        return Math.floor(Math.random() * (max_int - min_int + 1)) + min_int;
-    }
-
-    // Library C options
-    // Plain JavaScript:
-    // document.getElementById('library_c_words').addEventListener('change', function(){
-    //     library_c_words = this.value;
-    //     console.log(library_c_words);
-    // });
-    $("#library_c_words").on("change", function() {
-        library_c_words = parseInt(this.value);
-        // console.log(library_c_words);
-    });
-    $("#library_c_interval").on("change", function() {
-        library_c_interval = parseInt(this.value);
-        // console.log(library_c_interval);
-    });
-    $("#library_c_repeat").on("change", function() {
-        library_c_repeat = parseInt(this.value);
-        // console.log(library_c_repeat);
-    });
-
-
-    // Click the "Play" button start to play
-    $("#library_c_btn").on("click", function() {
-        //  http://qianzi.ca/wp-content/uploads/qianzi/Library/library_b.json
-        //  http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A1.mp3
-        
-        $.get("http://qianzi.ca/wp-content/uploads/qianzi/Library/library_c.json", function(response) {
-            var library_c_allwords = response;
-            console.log(library_c_allwords[0]);
-            console.log(library_c_allwords[1]);
-        });
-
-        //$.getJSON( "Library/library_c.json", function( data ) {
-            //console.log(data);
-            //var items = [];
-            //$.each( data, function( key, val ) {
-            //  items.push( "<li id='" + key + "'>" + val + "</li>" );
-            //});
-            
-            //$( "<ul/>", {
-            //  "class": "my-new-list",
-            //  html: items.join( "" )
-            //}).appendTo( "body" );
-        //});
-        //console.log(library_c_allwords);
-        //console.log(library_c_allwords[0]);
-
-        $("#library_c_answers").empty();
-        $("#library_c_answers").hide();
-        $("#library_c_playlist").empty();
-        for (i = 1; i <= library_c_words; i++) {
-            // $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
-            $("#library_c_playlist").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
-            word_num = RandomInt(min_int_c, max_int_c)
-            ///////////////////////////////////////////////////////////
-            // while (used_words.includes(word_num)) {               //
-            //     word_num = RandomInt(min_int_c, max_int_c);       //
-            // }                                                     //
-            // used_words.push(word_num);                            // 
-            ///////////////////////////////////////////////////////////
-            $("#library_c_answers").append("<p>" + i + ". " + library_c_allwords[word_num - 1] + "</p>");
-            for (j = 1; j <= library_c_repeat; j++) {
-                // $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
-                $("#library_c_playlist").append("<audio src=\"Library/C/C" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
-            }
-        }
-
-
-        var i = 0;
-        setTimeout(function() {
-            $("audio")[0].play();
-        }, base_interval);
-        i = i + 1;
-        
-        // Play audio files
-        $("audio").on("ended", function() {
-            var audio = $(this).next("audio");
-            if (audio.length) {
-                if ((i % (library_c_repeat + 1)) == 1) {
-                    setTimeout(function() {
-                        audio.get(0).play();
-                    }, base_interval);
-                } else {
-                    setTimeout(function() {
-                        audio.get(0).play();
-                    }, library_c_interval);
-                }
-                i = i + 1;
-            } else {
-                //$("#library_c_answers").empty();
-                $("#library_c_answers").show();
-            }
-        });
-
-    });
+	var max_int_c = 400;
+	var base_interval_c = 3000;
+	
+	var library_c_words = 10;
+	var library_c_interval = 10000;
+	var library_c_repeat = 1;
+	var used_c = [];
+	
+	// Library C options
+	// Plain JavaScript:
+	// document.getElementById('library_c_words').addEventListener('change', function(){
+	//     library_c_words = this.value;
+	//     console.log(library_c_words);
+	// });
+	$("#library_c_words").on("change", function() {
+		library_c_words = parseInt(this.value);
+		// console.log(library_c_words);
+	});
+	$("#library_c_interval").on("change", function() {
+		library_c_interval = parseInt(this.value);
+		// console.log(library_c_interval);
+	});
+	$("#library_c_repeat").on("change", function() {
+		library_c_repeat = parseInt(this.value);
+		// console.log(library_c_repeat);
+	});
+	
+	// Click the "Play" button start to play
+	$("#library_c_btn").on("click", function() {
+		//  http://qianzi.ca/wp-content/uploads/qianzi/Library/library_c.json
+		//  http://qianzi.ca/wp-content/uploads/qianzi/Library/C/C1.mp3
+		                     
+		$.get("http://qianzi.ca/wp-content/uploads/qianzi/Library/library_c.json", function(response) {
+			var library_c_allwords = response;
+			console.log(library_c_allwords[0]);
+			console.log(library_c_allwords[1]);
+			
+			//$.getJSON( "Library/library_c.json", function( data ) {
+				//console.log(data);
+				//var items = [];
+				//$.each( data, function( key, val ) {
+				//  items.push( "<li id='" + key + "'>" + val + "</li>" );
+				//});
+				
+				//$( "<ul/>", {
+				//  "class": "my-new-list",
+				//  html: items.join( "" )
+				//}).appendTo( "body" );
+			//});
+			//console.log(library_c_allwords);
+			//console.log(library_c_allwords[0]);
+	
+	
+			$("#library_c_answers").empty();
+			$("#library_c_answers").hide();
+			$("#library_c_playlist").empty();
+			used_c = [];
+			for (i = 1; i <= library_c_words; i++) {
+				$("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
+				word_num = RandomInt(min_int_c, max_int_c, used_c)
+				$("#library_c_answers").append("<p>" + i + ". " + library_c_allwords[word_num - 1] + "</p>");
+				for (j = 1; j <= library_c_repeat; j++) {
+					$("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/C/C" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
+				}
+			}
+	
+	
+			var i = 0;
+			setTimeout(function() {
+				$("audio")[0].play();
+			}, base_interval_c);
+			i = i + 1;
+			
+			// Play audio files
+			$("audio").on("ended", function() {
+				var audio = $(this).next("audio");
+				if (audio.length) {
+					if ((i % (library_c_repeat + 1)) == 1) {
+						setTimeout(function() {
+							audio.get(0).play();
+						}, base_interval_c);
+					} else {
+						setTimeout(function() {
+							audio.get(0).play();
+						}, library_c_interval);
+					}
+					i = i + 1;
+				} else {
+					$("#library_c_answers").show();
+				}
+			});
+		});    
+	});
 });
