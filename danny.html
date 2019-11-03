@@ -590,13 +590,13 @@
                         $("#library_c_playlist").empty();
                         for (i = 1; i <= library_c_words; i++) {
                             // $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
-                            $("#library_c_playlist").append("<audio src=\"Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
+                            $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/N/N" + i + ".mp3\" type=\"audio/mpeg\"></audio>");
                             word_num = RandomInt(min_int_c, max_int_c, used_c)
                             used_c.push(word_num)
                             $("#library_c_answers").append("<p>" + i + ". " + library_c_allwords[word_num - 1] + "</p>");
                             for (j = 1; j <= library_c_repeat; j++) {
                                 // $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/A/A" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
-                                $("#library_c_playlist").append("<audio src=\"Library/C/C" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
+                                $("#library_c_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/C/C" + word_num + ".mp3\" type=\"audio/mpeg\"></audio>");
                             }
                         }
                         var i = 0;
