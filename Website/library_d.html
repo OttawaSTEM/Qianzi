@@ -1,0 +1,49 @@
+<div id="library_d">
+    <table style="width: 30%;">
+        <tbody>
+            <tr>
+                <td><label id="wordrange_d" style="font-size: 140%;" for="range_d">听写范围:</label></td>
+                <td colspan="2"><input type="text" id="range_d" readonly="" style="border:0; color:#81d742; font-weight:bold; font-size: 140%;" value="1 - 1100"></td>
+            </tr>
+            <tr height="40px">
+                <td colspan="3">
+                    <div id="slider-range-d" style="width: 100%; color:#81d742;">&nbsp;</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 110%;">听写词数</td>
+                <td style="font-size: 110%;">听写间隔</td>
+                <td style="font-size: 110%;">重复次数</td>
+            </tr>
+            <tr>
+
+                <td><select id="library_d_words" class="maincolor">
+                        <option value="10">10 个词</option>
+                        <option value="20">20 个词</option>
+                        <option value="50">50 个词</option>
+                        <option value="80">80 个词</option>
+                        <option value="100">100 个词</option>
+                    </select></td>
+                <td><select id="library_d_interval" class="maincolor">
+                        <option value="10000">10 秒</option>
+                        <option value="20000">20 秒</option>
+                        <option value="30000">30 秒</option>
+                    </select></td>
+                <td><select id="library_d_repeat" class="maincolor">
+                        <option value="1">1 次</option>
+                        <option value="2">2 次</option>
+                        <option value="3">3 次</option>
+                    </select></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <button id="library_d_btn" class="button small color">开始听写</button>
+</div>
+<br>
+
+<div id="library_d_playlist"></div>
+
+<div id="library_d_answers" style="font-size: 2em; line-height: 1.6; display: none;"></div>

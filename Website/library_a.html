@@ -1,0 +1,49 @@
+<div id="test_library_a">
+    <table style="width: 30%;">
+        <tbody>
+            <tr>
+                <td><label id="wordrange_a" style="font-size: 140%;" for="range_a">听写范围:</label></td>
+                <td colspan="2"><input id="range_a" style="border: 0; color: #81d742; font-weight: bold; font-size: 140%;" readonly="readonly" type="text" value="1 - 300"></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="slider-range-a" style="width: 100%; color: #81d742;">&nbsp;</div>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td style="font-size: 110%;">听写词数</td>
+                <td style="font-size: 110%;">听写间隔</td>
+                <td style="font-size: 110%;">重复次数</td>
+            </tr>
+            <tr>
+                <td><select id="library_a_words" class="maincolor">
+                        <option value="10">10 个词</option>
+                        <option value="20">20 个词</option>
+                        <option value="30">30 个词</option>
+                        <option value="40">40 个词</option>
+                    </select></td>
+                <td><select id="library_a_interval" class="maincolor">
+                        <option value="10000">10 秒</option>
+                        <option value="20000">20 秒</option>
+                        <option value="30000">30 秒</option>
+                        <option value="40000">40 秒</option>
+                    </select></td>
+                <td><select id="library_a_repeat" class="maincolor">
+                        <option value="1">1 次</option>
+                        <option value="2">2 次</option>
+                        <option value="3">3 次</option>
+                        <option value="4">4 次</option>
+                    </select></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <button id="btn_library_a" class="button small color">开始听写</button>
+</div>
+<br>
+
+<div id="library_a_playlist"></div>
+
+<div id="library_a_answers" style="display: none;"></div>
