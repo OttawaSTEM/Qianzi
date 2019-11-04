@@ -1,0 +1,15 @@
+select.maincolor {
+    font-size: 120%;
+    color: white; 
+    background-color: #81d742;
+    margin-right: 15px;
+}
+
+#slider-range-a .ui-slider-range { background: #8ae234; }
+#slider-range-a .ui-slider-handle { border-color: #8ae234; }
+#slider-range-b .ui-slider-range { background: #8ae234; }
+#slider-range-b .ui-slider-handle { border-color: #8ae234; }
+#slider-range-c .ui-slider-range { background: #8ae234; }
+#slider-range-c .ui-slider-handle { border-color: #8ae234; }
+#slider-range-d .ui-slider-range { background: #8ae234; }
+#slider-range-d .ui-slider-handle { border-color: #8ae234; }
