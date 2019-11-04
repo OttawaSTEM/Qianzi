@@ -37,7 +37,7 @@ $(document).ready(function () {
         max: 300,
         values: [ 1, 300 ],
         slide: function(event, ui) {
-            $("#amount").val( "  " + ui.values[0] + " - " + ui.values[1]);
+            $("#range_a").val( "  " + ui.values[0] + " - " + ui.values[1]);
             min_range_a = ui.values[0]; 
             max_range_a = ui.values[1];
         }
@@ -117,7 +117,7 @@ $(document).ready(function () {
 		max: 600,
 		values: [ 1, 600 ],
 		slide: function(event, ui) {
-			$("#amount_b").val( "  " + ui.values[0] + " - " + ui.values[1]);
+			$("#range_b").val( "  " + ui.values[0] + " - " + ui.values[1]);
 			min_range_b = ui.values[0]; 
 			max_range_b = ui.values[1];
 		}
@@ -198,7 +198,7 @@ $(document).ready(function () {
         max: 400,
         values: [ 1, 400 ],
         slide: function(event, ui) {
-            $("#amount_c").val( "  " + ui.values[0] + " - " + ui.values[1]);
+            $("#range_c").val( "  " + ui.values[0] + " - " + ui.values[1]);
             min_int_c = ui.values[0]; 
             max_int_c = ui.values[1];
         }
@@ -273,13 +273,13 @@ $(document).ready(function () {
         // console.log(library_d_repeat);
     });
     
-    $("#slider-range-c").slider({
+    $("#slider-range-d").slider({
         range: true,
         min: 1,
         max: 400,
         values: [ 1, 400 ],
         slide: function(event, ui) {
-            $("#amount_d").val( "  " + ui.values[0] + " - " + ui.values[1]);
+            $("#range_d").val( "  " + ui.values[0] + " - " + ui.values[1]);
             min_int_d = ui.values[0]; 
             max_int_d = ui.values[1];
         }

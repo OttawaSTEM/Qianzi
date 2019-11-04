@@ -411,8 +411,8 @@
                         <table style="width: 30%;">
                             <tbody>
                                 <tr>
-                                    <td><label id="wordrange" for="amount" style="font-size: 140%;">听写范围:</label></td>
-                                    <td colspan="2"><input type="text" id="amount" readonly style="border:0; color:#81d742; font-weight:bold; font-size: 140%;" value="1 - 300"></td>
+                                    <td><label id="wordrange_a" for="range_a" style="font-size: 140%;">听写范围:</label></td>
+                                    <td colspan="2"><input type="text" id="range_a" readonly style="border:0; color:#81d742; font-weight:bold; font-size: 140%;" value="1 - 300"></td>
                                 </tr>
                                 <tr height="35px">
                                     <td colspan="3"><div id="slider-range-a" style="width: 100%; color:#81d742;"></div></td>
@@ -563,7 +563,7 @@
                 max: 300,
                 values: [ 1, 300 ],
                 slide: function(event, ui) {
-                    $("#amount").val( "  " + ui.values[0] + " - " + ui.values[1]);
+                    $("#range_a").val( "  " + ui.values[0] + " - " + ui.values[1]);
                     min_range_a = ui.values[0]; 
                     max_range_a = ui.values[1];
                 }
