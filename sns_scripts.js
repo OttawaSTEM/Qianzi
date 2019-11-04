@@ -276,8 +276,8 @@ $(document).ready(function () {
     $("#slider-range-d").slider({
         range: true,
         min: 1,
-        max: 400,
-        values: [ 1, 400 ],
+        max: 1100,
+        values: [ 1, 1100 ],
         slide: function(event, ui) {
             $("#range_d").val( "  " + ui.values[0] + " - " + ui.values[1]);
             min_int_d = ui.values[0]; 
