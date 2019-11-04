@@ -300,7 +300,7 @@ $(document).ready(function () {
                 used_d.push(word_num_d)
                 $("#library_d_answers").append("<p>" + i + ". " + library_d_allwords[word_num_d - 1] + "</p>");
                 for (j = 1; j <= library_d_repeat; j++) {
-                    $("#library_d_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/C/C" + word_num_d + ".mp3\" type=\"audio/mpeg\"></audio>");
+                    $("#library_d_playlist").append("<audio src=\"http://qianzi.ca/wp-content/uploads/qianzi/Library/D/D" + word_num_d + ".mp3\" type=\"audio/mpeg\"></audio>");
                 }
             }
 
